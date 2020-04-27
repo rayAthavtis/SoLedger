@@ -1,0 +1,244 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="3"
+            android:orientation="vertical" >
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#F2F9F8"
+                android:orientation="horizontal" >
+                <Button
+                    android:id="@+id/btn_calendar"
+                    android:layout_width="0dp"
+                    android:layout_height="40dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/calendar" />
+                <TextView
+                    android:id="@+id/txtDate"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="7"
+                    android:padding="5dp"
+                    android:textSize="16sp" />
+                <Button
+                    android:id="@+id/btn_remain"
+                    android:layout_width="0dp"
+                    android:layout_height="40dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/remain" />
+            </LinearLayout>
+
+            <ImageView
+                android:id="@+id/one"
+                android:contentDescription="@string/thanks"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:src="@drawable/one" />
+        </LinearLayout>
+
+        <TableLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="8" >
+            <TableRow>
+                <TextView
+                    android:layout_weight="7"
+                    android:textAlignment="center"
+                    android:textSize="24sp"
+                    android:fontFamily="sans-serif-black"
+                    android:text="@string/dol" />
+                <EditText
+                    android:id="@+id/money"
+                    android:layout_weight="1"
+                    android:background="@drawable/btn_edit"
+                    android:textAlignment="center"
+                    android:inputType="numberDecimal"
+                    android:autofillHints="@string/hInt"
+                    android:hint="@string/hInt" />
+                <TextView
+                    android:layout_weight="7"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="5dp"
+                    android:textAlignment="center"
+                    android:textSize="20sp"
+                    android:fontFamily="sans-serif-black"
+                    android:text="@string/doll" />
+            </TableRow>
+
+            <TableRow>
+                <ImageView
+                    android:id="@+id/food"
+                    android:contentDescription="@string/food"
+                    android:layout_weight="1"
+                    android:layout_height="60dp"
+                    android:layout_marginTop="5dp"
+                    android:src="@drawable/food" />
+                <ImageView
+                    android:id="@+id/health"
+                    android:contentDescription="@string/health"
+                    android:layout_weight="1"
+                    android:layout_height="60dp"
+                    android:layout_marginTop="5dp"
+                    android:src="@drawable/health" />
+                <ImageView
+                    android:id="@+id/play"
+                    android:contentDescription="@string/play"
+                    android:layout_weight="1"
+                    android:layout_height="60dp"
+                    android:layout_marginTop="5dp"
+                    android:src="@drawable/play" />
+                <ImageView
+                    android:id="@+id/allin"
+                    android:contentDescription="@string/income"
+                    android:layout_weight="1"
+                    android:layout_height="60dp"
+                    android:layout_marginTop="5dp"
+                    android:src="@drawable/in" />
+            </TableRow>
+
+            <RadioGroup
+                android:id="@+id/rgp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal" >
+                <RadioButton
+                    android:id="@+id/rbt01"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:checked="true"
+                    android:textAlignment="center"
+                    android:text="@string/food" />
+                <RadioButton
+                    android:id="@+id/rbt02"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:checked="false"
+                    android:textAlignment="center"
+                    android:text="@string/health" />
+                <RadioButton
+                    android:id="@+id/rbt03"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:checked="false"
+                    android:textAlignment="center"
+                    android:text="@string/play" />
+                <RadioButton
+                    android:id="@+id/rbt04"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:checked="false"
+                    android:textAlignment="center"
+                    android:text="@string/income" />
+            </RadioGroup>
+        </TableLayout>
+
+        <TextView
+            android:id="@+id/tvOut"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="6"
+            android:background="@drawable/bkg"
+            android:padding="5dp"
+            android:text="@string/remarks" />
+        <AutoCompleteTextView
+            android:id="@+id/acp"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="2"
+            android:background="@drawable/btn_acp"
+            android:scrollbarStyle="insideInset"
+            android:hint="@string/hInt"
+            android:padding="5dp" />
+
+        <TextView
+            android:id="@+id/quotes"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="2"
+            android:layout_marginTop="10dp"
+            android:padding="5dp"
+            android:text="@string/quote" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="3"
+            android:orientation="vertical"
+            android:gravity="end">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal" >
+                <Button
+                    android:id="@+id/clear"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="40dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginLeft="10dp"
+                    android:background="@drawable/btn_ok"
+                    android:text="@string/clear" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="match_parent"
+                    android:textSize="24sp"
+                    android:textAlignment="center"
+                    android:text="@string/app_name" />
+
+                <Button
+                    android:id="@+id/btn_ok"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="40dp"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginRight="10dp"
+                    android:background="@drawable/btn_ok"
+                    android:text="@string/ok" />
+            </LinearLayout>
+            <Button
+                style="@style/Widget.AppCompat.Button.Borderless"
+                android:id="@+id/btn_more"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="#FAFAFA"
+                android:layout_marginEnd="10dp"
+                android:layout_marginRight="10dp"
+                android:textColor="#00c9ff"
+                android:text="@string/search" />
+        </LinearLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1" >
+            <TextView
+                android:id="@+id/txtLocal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                android:text="@string/local" />
+        </RelativeLayout>
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

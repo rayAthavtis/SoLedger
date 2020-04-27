@@ -1,0 +1,49 @@
+<resources>
+    <string name="app_name">SoLedger</string>
+    <string name="Statistics">Statistics</string>
+    <string name="about">About</string>
+    <string name="faq">FAQ</string>
+    <string name="thanks">Thanks</string>
+    <string name="re_enter">Please re-enter the app</string>
+    <string name="bad_network">Please check the network connection</string>
+
+    <string name="local">Local：USA</string>
+
+    <string name="hInt">Click to input</string>
+
+    <string name="dol">$</string>
+    <string name="doll">dollar</string>
+
+    <string name="food">Food ★</string>
+    <string name="health">Health ☆</string>
+    <string name="play">Play ★</string>
+    <string name="income">Income ☆</string>
+
+    <string name="date_pick">Try to arrive before this date: </string>
+
+    <string name="alert">Alert</string>
+    <string name="done">Done. </string>
+    <string name="empty">Empty! </string>
+
+    <string name="quote">Don\'t think about creating the sea, you must start with the little river.</string>
+    <string name="quote2">Saving money is making money. </string>
+    <string name="quote3">取之有度，用之有节，则常足。</string>
+
+    <string name="clear">Clear history</string>
+    <string name="ok">OK</string>
+    <string name="cancel">Cancel</string>
+    <string name="confirm">You will lose all the data you recorded before! </string>
+
+    <string name="all">- All -</string>
+    <string name="detail">- Detail -</string>
+    <string name="inquire">Inquire</string>
+    <string name="remain">Remain</string>
+
+    <string name="search">Get more information>>></string>
+
+    <string name="faq_run">App blocked</string>
+    <string name="faq_update">Update failed</string>
+
+    <string name="remarks">Remarks：</string>
+
+</resources>
