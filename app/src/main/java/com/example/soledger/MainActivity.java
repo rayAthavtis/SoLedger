@@ -36,15 +36,16 @@ import java.util.Calendar;
 
 public class MainActivity extends AppCompatActivity {
 
-    TextView date;
-    EditText money;
-    String checked;
+    TextView date;  // 日期
+    EditText money;  // 花费
+    String checked;  // 类别
     RadioGroup rgp;
     AutoCompleteTextView TxtIn;
     TextView TxtOut;
     TextView quote;
-    int cnt = 0;
+    int cnt = 0;  // 用于切换quote
 
+    // 备注适配
     static final String[] default_remarks = new String[] {"吃早餐", "发工资啦", "玄不救非，氪不改命",
             "医疗保险费"};
 
@@ -53,9 +54,11 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        // 获取当前日期时间
         Calendar cld = Calendar.getInstance();
         String now_date = cld.get(Calendar.YEAR) + "/" + (cld.get(Calendar.MONTH) + 1) + "/"
                 + cld.get(Calendar.DAY_OF_MONTH);
+        // 绑定
         date = findViewById(R.id.txtDate);
         date.setText(now_date);
 
@@ -67,6 +70,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
                 switch (checkedId) {
+                	// 类别选项
                     case R.id.rbt01:
                         Toast.makeText(getApplicationContext(), R.string.food,
                                 Toast.LENGTH_SHORT).show();
@@ -92,6 +96,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
         TxtIn = findViewById(R.id.acp);
+        // 备注适配
         ArrayAdapter<String> adp = new ArrayAdapter<>(this,
                 android.R.layout.simple_dropdown_item_1line, default_remarks);
         TxtIn.setAdapter(adp);
@@ -125,7 +130,9 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public void onClick(View v) {
             switch (v.getId()) {
+            	// 选择日期
                 case R.id.btn_calendar:
+                	// 获取当前日期作为默认
                     Calendar ncd = Calendar.getInstance();
                     DatePickerDialog dtp = new DatePickerDialog(MainActivity.this,
                             new DatePickerDialog.OnDateSetListener() {
@@ -138,7 +145,9 @@ public class MainActivity extends AppCompatActivity {
                             }, ncd.get(Calendar.YEAR), ncd.get(Calendar.MONTH), ncd.get(Calendar.DAY_OF_MONTH));
                     dtp.show();
                     return ;
+                // 确认存储
                 case R.id.btn_ok:
+                	// 获取各个数据信息
                     String str = TxtIn.getText().toString();
                     String oup = getString(R.string.remarks) + str;
                     TxtOut.setText(oup);
@@ -151,16 +160,20 @@ public class MainActivity extends AppCompatActivity {
                     }
                     double n = Double.parseDouble(m);
                     String msg = checked + ": " + n + "\n" + TxtOut.getText().toString();
+                    // 提示框
                     AlertDialog.Builder myDlg = new AlertDialog.Builder(MainActivity.this);
                     myDlg.setTitle(R.string.alert);
                     myDlg.setMessage(msg);
+                    // 取消
                     myDlg.setNegativeButton(getString(R.string.cancel), null);
+                    // 确定
                     myDlg.setPositiveButton(getString(R.string.ok), new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
                             String dt = date.getText().toString();
                             String new_money = money.getText().toString();
 
+                            // 存储数据，与旧数据进行整合（计算金额）
                             SharedPreferences preferences = getSharedPreferences("detail",
                                     MODE_PRIVATE);
                             String old_data = preferences.getString(dt, "");
@@ -190,6 +203,7 @@ public class MainActivity extends AppCompatActivity {
                             editor2.putString("remain", Double.toString(all_money));
                             editor2.apply();
 
+                            // 重置信息显示
                             money.setText("");
                             TxtIn.setText("");
                             TxtOut.setText(R.string.remarks);
@@ -197,16 +211,21 @@ public class MainActivity extends AppCompatActivity {
                     });
                     myDlg.show();
                     return ;
+                // 更多信息
                 case R.id.btn_more:
+                	// 跳转，百度网址代替一下
                     Uri myu = Uri.parse("http://www.baidu.com");
                     Intent myi = new Intent(Intent.ACTION_VIEW, myu);
                     startActivity(myi);
                     return ;
+                // 清除历史数据
                 case R.id.clear:
                     AlertDialog.Builder myDlg2 = new AlertDialog.Builder(MainActivity.this);
                     myDlg2.setTitle(R.string.alert);
                     myDlg2.setMessage(getString(R.string.confirm));
+                    // 取消
                     myDlg2.setNegativeButton(getString(R.string.cancel), null);
+                    // 确定
                     myDlg2.setPositiveButton(getString(R.string.ok), new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
@@ -223,6 +242,7 @@ public class MainActivity extends AppCompatActivity {
                         }
                     });
                     myDlg2.show();
+                    // 切换quote
                     switch (cnt) {
                         case 0:
                             quote.setText(R.string.quote2); cnt++; break;
@@ -232,6 +252,7 @@ public class MainActivity extends AppCompatActivity {
                             quote.setText(R.string.quote); cnt=0; break;
                     }
                     return ;
+                // 余额信息
                 case R.id.btn_remain:
                     SharedPreferences preferences3 = getSharedPreferences("all_comp",
                             MODE_PRIVATE);
@@ -246,9 +267,10 @@ public class MainActivity extends AppCompatActivity {
     }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        menu.addSubMenu(1, 0, 0, R.string.about);
-        menu.addSubMenu(2, 1, 0, R.string.Statistics);
-        SubMenu sbm03 = menu.addSubMenu(3, 2 ,0, R.string.faq);
+    	// 菜单
+        menu.addSubMenu(1, 0, 0, R.string.about);  // 关于
+        menu.addSubMenu(2, 1, 0, R.string.Statistics);  // 数据
+        SubMenu sbm03 = menu.addSubMenu(3, 2 ,0, R.string.faq);  // 常见FAQ
         sbm03.add(3, 4, 1, R.string.faq_run);
         sbm03.add(3, 5, 0, R.string.faq_update);
         return true;
@@ -262,6 +284,7 @@ public class MainActivity extends AppCompatActivity {
                 myDlg.setPositiveButton(getString(R.string.ok), null);
                 myDlg.show();
                 return true;
+            // 获取当前日期的统计数据
             case 1:
                 AlertDialog.Builder myDlg2 = new AlertDialog.Builder(MainActivity.this);
                 myDlg2.setTitle(R.string.Statistics);
